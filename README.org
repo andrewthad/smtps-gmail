@@ -1,0 +1,38 @@
+#+TITLE: Gmail-Specific SMTP Client
+[[https://travis-ci.org/enzoh/smtps-gmail][https://api.travis-ci.org/enzoh/smtps-gmail.svg?branch=master]] [[https://hackage.haskell.org/package/smtps-gmail][https://img.shields.io/hackage/v/smtps-gmail.svg]] [[http://packdeps.haskellers.com/feed?needle=smtps-gmail][https://img.shields.io/hackage-deps/v/smtps-gmail.svg]]
+
+*** Introduction
+
+The ~smtps-gmail~ package provides an SMTP client
+for sending Gmail. Communications between the client
+and server are secured with TLS.
+
+*** Installation
+
+You should first get a clone of the ~smtps-gmail~
+repository, and then install it from inside the
+source directory:
+
+#+BEGIN_SRC bash
+$ git clone https://github.com/enzoh/smtps-gmail
+$ cd smtps-gmail
+$ cabal install
+#+END_SRC
+
+*** Usage
+
+Below is an example using ghci, where Alice sends
+an Excel spreadsheet to Bob using the SMTP client. 
+
+#+BEGIN_SRC haskell
+> :set -XOverloadedStrings
+> :module Network.Mail.Mime Network.Mail.Client.Gmail
+> sendGmail "alice" "password" (Address (Just "Alice") "alice@gmail.com") [Address (Just "Bob") "bob@example.com"] [] [] "Excel Spreadsheet" "Hi Bob,\n\nThe Excel spreadsheet is attached.\n\nRegards,\n\nAlice" ["Spreadsheet.xls"] 10000000
+#+END_SRC
+
+** Resources
+
+Feel free to contact me if you have any questions
+or comments regarding this package.
+
+Enzo Haussecker <ehaussecker@gmail.com>
